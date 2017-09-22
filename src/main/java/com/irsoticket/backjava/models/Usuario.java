@@ -2,17 +2,19 @@ package com.irsoticket.backjava.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Usuarios")
+@Table(name="usuarios")
 public class Usuario {
 	
 	@Id
+	@GeneratedValue
 	private long id;
 	
-	@Column(name="Nombre")
+	@Column
 	private String nombre;
 
 	public long getId() {
