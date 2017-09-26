@@ -16,7 +16,16 @@ public class Usuario {
 	private long id;
 	
 	@Column
+	private String pass;
+
+	@Column
 	private String nombre;
+	
+	@Column
+	private String apellido;
+	
+	@Column
+	private int rol;
 
 	public long getId() {
 		return id;
@@ -26,6 +35,30 @@ public class Usuario {
 		this.id = id;
 	}
 
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public int getRol() {
+		return rol;
+	}
+
+	public void setRol(int rol) {
+		this.rol = rol;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

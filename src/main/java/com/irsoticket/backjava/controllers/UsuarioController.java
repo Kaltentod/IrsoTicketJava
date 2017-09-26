@@ -8,8 +8,10 @@ import com.irsoticket.backjava.repositories.UsuarioRepository;
 
 @RestController
 public class UsuarioController {
+	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
 	@GetMapping("/Usuario")
 	public Object test(){
 		return usuarioRepository.findAll();
