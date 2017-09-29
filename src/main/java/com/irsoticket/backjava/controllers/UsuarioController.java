@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irsoticket.backjava.models.Usuario;
 import com.irsoticket.backjava.repositories.UsuarioRepository;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 @RestController
 public class UsuarioController {
@@ -47,7 +46,7 @@ public class UsuarioController {
 	
 	//Borrar un usuario
 	@DeleteMapping("/borrarUsuario/{id}")
-	public Object borrarUsuario(@PathVariable long id)throws MessagingException {
+	public Object borrarUsuario(@PathVariable long id) {
 		Usuario usuario = usuarioRepository.findOne(id);
 		usuarioRepository.delete(usuario);
 		return usuario;
