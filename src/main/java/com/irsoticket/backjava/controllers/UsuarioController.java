@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irsoticket.backjava.models.Usuario;
 import com.irsoticket.backjava.repositories.UsuarioRepository;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 @RestController
 @RequestMapping("/usuario")
