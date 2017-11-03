@@ -1,6 +1,6 @@
 package com.irsoticket.backjava.controllers;
 
-import java.util.Collection;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,46 +13,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irsoticket.backjava.models.Usuario;
-import com.irsoticket.backjava.repositories.UsuarioRepository;
+import com.irsoticket.backjava.services.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioService usuarioService;
 	
-	//Trae todos los usuarios
+	//Traer todos los usuarios
 	@GetMapping
-	public Object findAll(){
-		return usuarioRepository.findAll();
+	public Iterable<Usuario> findAll(){
+		
+		return usuarioService.findAll();
 	} 
 	
-	//Inserta un nuevo usuario
+	//Traer un usuario puntual
+	@GetMapping("/{id}")
+	public Usuario traerUsuario(@PathVariable long id){
+			
+		return usuarioService.traerUsuario(id);
+	} 
+	
+	//Insertar un nuevo usuario
 	@PostMapping
-	public Usuario altaUsuario(@RequestBody Usuario usuario){
-		return usuarioRepository.save(usuario);
+	public Usuario altaUsuario(@RequestBody @Valid Usuario usuario){
+		return usuarioService.altaUsuario(usuario);
 	}
 	
 	//Modificar un usuario
 	@PutMapping("/{id}")
 	public Usuario modificarUsuario(@PathVariable long id,@RequestBody Usuario usuario){
-		
-		Usuario usuarioMod = usuarioRepository.findOne(id);
-		
-		usuarioMod.setApellido(usuario.getApellido());
-		usuarioMod.setNombre(usuario.getNombre());
-		usuarioMod.setPass(usuario.getPass());
-		usuarioMod.setRol(usuario.getRol());
-		
-		return usuarioRepository.save(usuarioMod);
+		return usuarioService.modificarUsuario(id, usuario);
 	}
 	
 	//Borrar un usuario
 	@DeleteMapping("/{id}")
-	public Usuario borrarUsuario(@PathVariable long id) {
-		Usuario usuario = usuarioRepository.findOne(id);
-		usuarioRepository.delete(usuario);
-		return usuario;
+	public void borrarUsuario(@PathVariable long id) {
+		 usuarioService.borrarUsuario(id);
 	}
 }
