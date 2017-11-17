@@ -19,6 +19,8 @@
 	</parent>
 
 	<properties>
+		<!-- Use the latest version whenever possible. -->
+		<options.spring.docs>0.0.13</options.spring.docs>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -28,6 +30,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.damianwajser</groupId>
+			<artifactId>spring-rest-commons-options</artifactId>
+			<version>${options.spring.docs}</version>
 		</dependency>
 
 		<dependency>
