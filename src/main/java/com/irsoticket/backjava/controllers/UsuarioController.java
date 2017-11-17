@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irsoticket.backjava.dto.UsuarioDto;
 import com.irsoticket.backjava.models.Usuario;
 import com.irsoticket.backjava.services.UsuarioService;
 
@@ -24,27 +25,27 @@ public class UsuarioController {
 	
 	//Traer todos los usuarios
 	@GetMapping
-	public Iterable<Usuario> findAll(){
+	public Iterable<UsuarioDto> findAll(){
 		
 		return usuarioService.findAll();
 	} 
 	
 	//Traer un usuario puntual
 	@GetMapping("/{id}")
-	public Usuario traerUsuario(@PathVariable long id){
+	public UsuarioDto traerUsuario(@PathVariable long id){
 			
 		return usuarioService.traerUsuario(id);
 	} 
 	
 	//Insertar un nuevo usuario
 	@PostMapping
-	public Usuario altaUsuario(@RequestBody @Valid Usuario usuario){
+	public UsuarioDto altaUsuario(@RequestBody @Valid UsuarioDto usuario){
 		return usuarioService.altaUsuario(usuario);
 	}
 	
 	//Modificar un usuario
 	@PutMapping("/{id}")
-	public Usuario modificarUsuario(@PathVariable long id,@RequestBody Usuario usuario){
+	public UsuarioDto modificarUsuario(@PathVariable long id,@RequestBody @Valid UsuarioDto usuario){
 		return usuarioService.modificarUsuario(id, usuario);
 	}
 	

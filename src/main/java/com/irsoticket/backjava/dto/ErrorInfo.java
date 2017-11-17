@@ -1,4 +1,4 @@
-package com.irsoticket.backjava.models;
+package com.irsoticket.backjava.dto;
 
 public class ErrorInfo {
 
