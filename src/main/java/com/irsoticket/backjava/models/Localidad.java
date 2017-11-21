@@ -9,17 +9,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irsoticket.backjava.dto.LocalidadDto;
-import com.irsoticket.backjava.dto.UsuarioDto;
-
 
 
 @Entity
@@ -29,14 +28,14 @@ public class Localidad {
 	
 	//Atributos
 	@Id 
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column(nullable=false)
 	@NotBlank
 	private String descripcion;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "localidad",fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "localidad",fetch = FetchType.LAZY)
 	private Set<Usuario> usuario = new HashSet<>();
 	
 	//Getters y Setters

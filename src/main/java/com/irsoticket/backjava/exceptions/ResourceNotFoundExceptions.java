@@ -4,8 +4,8 @@ public class ResourceNotFoundExceptions extends RuntimeException{
 	
 	private String mensaje; 
 	
-	public ResourceNotFoundExceptions(long id){
-		this.mensaje = "El usuario ingresado con id="+id+" no existe";
+	public ResourceNotFoundExceptions(String m,long id){
+		this.mensaje = m+" que se ingreso con id="+id+" no existe";
 	}
 
 	public String getMensaje() {

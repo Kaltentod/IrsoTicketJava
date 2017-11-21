@@ -3,6 +3,7 @@ package com.irsoticket.backjava.models;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,10 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irsoticket.backjava.dto.UsuarioDto;
 
 @Entity
@@ -45,7 +43,7 @@ public class Usuario {
 	@Column(nullable = false)
 	private String direccion;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.REFRESH)
 	@JoinColumn(name = "localidad", nullable = false)
 	private Localidad localidad;
 

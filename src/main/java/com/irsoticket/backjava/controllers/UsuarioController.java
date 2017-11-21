@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irsoticket.backjava.dto.UsuarioDto;
-import com.irsoticket.backjava.models.Usuario;
 import com.irsoticket.backjava.services.UsuarioService;
 
 @RestController

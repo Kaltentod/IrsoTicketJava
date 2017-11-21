@@ -1,8 +1,5 @@
 package com.irsoticket.backjava.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -33,7 +30,7 @@ public class UsuarioService {
 		Usuario usuario = usuarioRepository.findOne(id);
 
 		if (usuario == null) {
-			throw new ResourceNotFoundExceptions(id);
+			throw new ResourceNotFoundExceptions("El usuario",id);
 		}
 
 		return Usuario.toDto(usuario);
@@ -66,7 +63,7 @@ public class UsuarioService {
 			usuarioMod.setHorario(usuario.getHorario());
 			usuarioMod = usuarioRepository.save(usuarioMod);
 		} else {
-			throw new ResourceNotFoundExceptions(id);
+			throw new ResourceNotFoundExceptions("El usuario",id);
 		}
 
 		return Usuario.toDto(usuarioMod);
@@ -86,7 +83,7 @@ public class UsuarioService {
 		try {
 			usuarioRepository.delete(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundExceptions(id);
+			throw new ResourceNotFoundExceptions("El usuario",id);
 		}
 	}
 
