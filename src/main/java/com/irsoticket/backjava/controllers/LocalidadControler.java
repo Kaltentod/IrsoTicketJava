@@ -22,7 +22,7 @@ public class LocalidadControler {
 	@Autowired
 	private LocalidadService localidadService;
 
-	// Traer todos los usuarios
+	//Traer todos los usuarios
 	@GetMapping
 	public Iterable<LocalidadDto> findAll() {
 
