@@ -73,7 +73,7 @@ public class UsuarioService {
 		Localidad localidadMod = localidadRepository.findOne(usuario.getLocalidad());
 
 		if (localidadMod == null) {
-			throw new BadRequestException("La localidad: " + usuario.getLocalidad() + " no existe");
+			throw new ResourceNotFoundExceptions("La localidad",usuario.getLocalidad());
 		}
 		return localidadMod;
 	}
