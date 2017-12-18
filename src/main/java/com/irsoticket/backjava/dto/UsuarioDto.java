@@ -1,7 +1,7 @@
 package com.irsoticket.backjava.dto;
 
-import org.hibernate.validator.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonGetter;
 
 public class UsuarioDto {

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.irsoticket.backjava.dto.UsuarioDto;
 
@@ -26,12 +28,17 @@ public class Usuario {
 	private long id;
 
 	@Column(nullable = false)
+	@Size(min = 8, max = 16)
 	private String pass;
 
 	@Column(nullable = false)
+	//@Size(min = 6, max = 20)
+	@Pattern(regexp="^[a-zA-Z ]{2,20}",message="- Error en el formato - Solo se admiten de 2 a 20 caracteres alfabeticos")
 	private String nombre;
 
 	@Column(nullable = false)
+	//@Size(min = 6, max = 20)
+	@Pattern(regexp="^[a-zA-Z ]{2,20}",message="- Error en el formato - Solo se admiten de 2 a 20 caracteres alfabeticos")
 	private String apellido;
 
 	@Column
@@ -41,6 +48,8 @@ public class Usuario {
 	private int cargo;
 
 	@Column(nullable = false)
+	//@Size(min = 1, max = 20)
+	@Pattern(regexp="^[a-zA-Z0-9 ]{1,20}",message="- Error en el formato - Solo se admiten de 1 a 20 caracteres alfanumericos")
 	private String direccion;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.REFRESH)
@@ -48,9 +57,13 @@ public class Usuario {
 	private Localidad localidad;
 
 	@Column(nullable = false)
+	@Size(min = 7, max = 50)
+	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",message="Formato de email invalido")
 	private String mail;
 
 	@Column(nullable = false)
+	//@Size(min = 8, max = 10)
+	@Pattern(regexp="^[0-9]{8,10}",message="- Error en el formato - Solo se admiten de 8 a 10 caracteres numericos")
 	private String telefono;
 
 	@Column(nullable = false)
